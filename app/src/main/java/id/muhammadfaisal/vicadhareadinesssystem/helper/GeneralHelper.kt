@@ -2,6 +2,7 @@ package id.muhammadfaisal.vicadhareadinesssystem.helper
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 
@@ -18,6 +19,12 @@ class GeneralHelper {
             activity.startActivity(Intent(activity, clazz).putExtra(Constant.Key.BUNDLING, bundle))
             if (isForget){
                 activity.finish()
+            }
+        }
+
+        fun makeClickable(listener: View.OnClickListener, vararg views: View) {
+            for (view in views){
+                view.setOnClickListener(listener)
             }
         }
     }

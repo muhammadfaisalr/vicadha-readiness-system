@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp">
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yonkes 2"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:textColor="@color/grayText"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100 Anggota"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -4,6 +4,7 @@
     <string name="add_member">Tambah Anggota</string>
     <string name="phone_number">Nomor Telepon</string>
     <string name="member_name">Nama Anggota</string>
+    <string name="member">Anggota</string>
     <string name="email_member">Email Anggota</string>
     <string name="password">Kata Sandi</string>
     <string name="confirm_password">Konfirmasi Kata Sandi</string>
