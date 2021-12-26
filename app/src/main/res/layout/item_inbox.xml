@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_gravity="center|start"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/all_rounded"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="16dp"
+        android:src="@drawable/ic_danger"
+        android:textColor="@color/greenPrimary" />
+
+    <LinearLayout
+        android:gravity="center|start"
+        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Bahaya Kebakaran"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:textColor="@color/grayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Senin, 22 Desember 2021"/>
+
+    </LinearLayout>
+
+</LinearLayout>

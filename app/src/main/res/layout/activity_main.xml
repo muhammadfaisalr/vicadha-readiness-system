@@ -40,10 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@drawable/all_rounded"
-            android:text="MF"
+            android:fontFamily="@font/montserrat_bold"
             android:padding="16dp"
-            android:textColor="@color/greenPrimary"
-            android:fontFamily="@font/montserrat_bold"/>
+            android:text="MF"
+            android:textColor="@color/greenPrimary" />
 
     </RelativeLayout>
 

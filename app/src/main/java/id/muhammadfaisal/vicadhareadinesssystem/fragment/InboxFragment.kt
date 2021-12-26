@@ -9,18 +9,18 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.muhammadfaisal.vicadhareadinesssystem.R
-import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
-import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentMemberBinding
+import id.muhammadfaisal.vicadhareadinesssystem.adapter.InboxAdapter
+import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentInboxBinding
 
-class MemberFragment : Fragment() {
+class InboxFragment : Fragment() {
 
-    private lateinit var binding: FragmentMemberBinding
+    private lateinit var binding: FragmentInboxBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        this.binding = FragmentMemberBinding.inflate(this.layoutInflater)
+        this.binding = FragmentInboxBinding.inflate(this.layoutInflater)
         return this.binding.root
     }
 
@@ -29,7 +29,7 @@ class MemberFragment : Fragment() {
 
         this.binding.apply {
             this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            this.recyclerView.adapter = MemberAdapter(requireContext())
+            this.recyclerView.adapter = InboxAdapter(requireContext())
             this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
         }
     }
