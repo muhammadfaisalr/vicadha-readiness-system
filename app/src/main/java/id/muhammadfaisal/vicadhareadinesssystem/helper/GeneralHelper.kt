@@ -1,9 +1,9 @@
 package id.muhammadfaisal.vicadhareadinesssystem.helper
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 
 class GeneralHelper {
     companion object {
