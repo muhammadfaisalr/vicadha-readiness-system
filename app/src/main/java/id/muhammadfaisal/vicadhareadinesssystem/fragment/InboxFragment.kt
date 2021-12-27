@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.adapter.InboxAdapter
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentInboxBinding
+import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.utils.BottomSheets
 
-class InboxFragment : Fragment() {
+class InboxFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentInboxBinding
 
@@ -31,6 +33,14 @@ class InboxFragment : Fragment() {
             this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             this.recyclerView.adapter = InboxAdapter(requireContext())
             this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
+
+            GeneralHelper.makeClickable(this@InboxFragment, this.exfabWriteMessage)
+        }
+    }
+
+    override fun onClick(p0: View?) {
+        if (p0 == this.binding.exfabWriteMessage) {
+            BottomSheets.sendMessage(requireContext(), null)
         }
     }
 }

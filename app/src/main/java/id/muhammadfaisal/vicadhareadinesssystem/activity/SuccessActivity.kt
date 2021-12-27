@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.ActivitySuccessBinding
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
+import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
 class SuccessActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class SuccessActivity : AppCompatActivity() {
         this.extract()
 
         Handler(Looper.myLooper()!!).postDelayed({
-            GeneralHelper.move(this, MainActivity::class.java, true )
+            MoveTo.home(this, null, true)
         },3000L)
     }
 

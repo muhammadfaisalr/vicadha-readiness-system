@@ -7,14 +7,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.ItemInboxBinding
+import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
 class InboxAdapter(var context: Context) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var binding = ItemInboxBinding.bind(this.itemView)
 
         fun bind(context: Context) {
+            GeneralHelper.makeClickable(this, this.binding.root)
+        }
 
+        override fun onClick(p0: View?) {
+            if (p0 == this.binding.root) {
+                MoveTo.detailMessage(this.binding.root.context, null, false)
+            }
         }
 
     }
