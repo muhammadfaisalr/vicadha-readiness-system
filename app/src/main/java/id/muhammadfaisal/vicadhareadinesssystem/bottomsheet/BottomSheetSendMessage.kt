@@ -33,7 +33,7 @@ class BottomSheetSendMessage : BottomSheetDialogFragment(), View.OnClickListener
         if (p0 == this.binding.linearDanger) {
             MoveTo.sendNotification(requireContext(), null, false)
         } else {
-
+            MoveTo.regularMessage(requireContext(), null, false)
         }
     }
 }

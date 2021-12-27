@@ -36,6 +36,16 @@ class MoveTo {
             }
         }
 
+
+        fun regularMessage(context: Context, bundle: Bundle?, isForget: Boolean) {
+            context as AppCompatActivity
+            if (bundle != null) {
+                GeneralHelper.move(context, WriteMessageActivity::class.java, bundle, isForget)
+            }else{
+                GeneralHelper.move(context, WriteMessageActivity::class.java, isForget)
+            }
+        }
+
         fun detailMessage(context: Context, bundle: Bundle?, isForget: Boolean) {
             context as AppCompatActivity
             if (bundle != null) {
