@@ -27,6 +27,15 @@ class MoveTo {
             }
         }
 
+        fun addMember(context: Context, bundle: Bundle?, isForget: Boolean) {
+            context as AppCompatActivity
+            if (bundle != null) {
+                GeneralHelper.move(context, AddMemberActivity::class.java, bundle, isForget)
+            }else{
+                GeneralHelper.move(context, AddMemberActivity::class.java, isForget)
+            }
+        }
+
         fun sendNotification(context: Context, bundle: Bundle?, isForget: Boolean) {
             context as AppCompatActivity
             if (bundle != null) {

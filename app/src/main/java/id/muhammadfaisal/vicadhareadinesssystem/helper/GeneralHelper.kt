@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import id.muhammadfaisal.vicadhareadinesssystem.fragment.MemberFragment
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 
 class GeneralHelper {

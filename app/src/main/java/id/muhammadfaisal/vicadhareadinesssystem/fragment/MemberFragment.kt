@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentMemberBinding
+import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
-class MemberFragment : Fragment() {
+class MemberFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentMemberBinding
 
@@ -31,6 +32,14 @@ class MemberFragment : Fragment() {
             this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             this.recyclerView.adapter = MemberAdapter(requireContext())
             this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
+
+            GeneralHelper.makeClickable(this@MemberFragment, this.exfabAddMember)
+        }
+    }
+
+    override fun onClick(p0: View?) {
+        if (p0 == this.binding.exfabAddMember) {
+            MoveTo.addMember(requireContext(), null, false)
         }
     }
 }

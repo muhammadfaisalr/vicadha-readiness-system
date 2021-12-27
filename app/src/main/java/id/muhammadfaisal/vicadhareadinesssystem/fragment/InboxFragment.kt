@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.adapter.InboxAdapter
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentInboxBinding
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper

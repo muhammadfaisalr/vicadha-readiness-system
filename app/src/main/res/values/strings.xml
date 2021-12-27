@@ -63,4 +63,5 @@
     <string name="danger_message">Kirim Sinyal Bahaya</string>
     <string name="desc_danger_message">Kirim sinyal bahaya kepada para anggota dengan kepentingan tingg</string>
     <string name="share">Bagikan</string>
+    <string name="use_default_password">Gunakan Kata Sandi Default</string>
 </resources>
