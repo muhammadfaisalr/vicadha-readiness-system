@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "76377748142",
+    "firebase_url": "https://vicadha-readiness-system-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "vicadha-readiness-system",
+    "storage_bucket": "vicadha-readiness-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76377748142:android:e907f7ccb3884c9521733f",
+        "android_client_info": {
+          "package_name": "id.muhammadfaisal.vicadhareadinesssystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76377748142-v14ekng71hibsg9hnof4trkmo7hlhftt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXdEfKjiq9-AU5kI9GJqv5jC3JG2QfQIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76377748142-v14ekng71hibsg9hnof4trkmo7hlhftt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

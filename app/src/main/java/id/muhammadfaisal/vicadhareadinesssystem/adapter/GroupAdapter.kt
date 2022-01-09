@@ -1,27 +1,50 @@
 package id.muhammadfaisal.vicadhareadinesssystem.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.ItemGroupBinding
+import id.muhammadfaisal.vicadhareadinesssystem.helper.DatabaseHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.room.entity.GroupEntity
+import id.muhammadfaisal.vicadhareadinesssystem.utils.BottomSheets
+import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
-class GroupAdapter(var context: Context) : RecyclerView.Adapter<GroupAdapter.ViewHolder>() {
+class GroupAdapter(var context: AppCompatActivity, var groups: List<GroupEntity>) : RecyclerView.Adapter<GroupAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var binding = ItemGroupBinding.bind(itemView)
+        private lateinit var contextActivity : AppCompatActivity
 
-        fun bind(context: Context) {
+        fun bind(context: AppCompatActivity, groupEntity: GroupEntity) {
+
+            contextActivity = context
+
+            binding.apply {
+                this.imageView.setImageResource(groupEntity.image)
+                this.textTitle.text = groupEntity.name
+                this.textTotalAnggota.text = "1 Anggota"
+            }
+
             GeneralHelper.makeClickable(this, binding.root)
         }
 
         override fun onClick(p0: View?) {
             if (p0 == binding.root) {
-                MoveTo.detailGroup(binding.root.context, null, false)
+                val hasChild = DatabaseHelper.RoomDb.groupDao(binding.root.context).getChild(binding.textTitle.text.toString()).isNotEmpty()
+                if (hasChild) {
+                    BottomSheets.childGroup(contextActivity, binding.textTitle.text.toString())
+                }else{
+                    val bundle = Bundle()
+                    bundle.putString(Constant.Key.GROUP_NAME, this.binding.textTitle.text.toString())
+                    MoveTo.detailGroup(contextActivity, bundle, false)
+                }
             }
         }
     }
@@ -31,10 +54,10 @@ class GroupAdapter(var context: Context) : RecyclerView.Adapter<GroupAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(context)
+        holder.bind(context, groups[position])
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return groups.size
     }
 }

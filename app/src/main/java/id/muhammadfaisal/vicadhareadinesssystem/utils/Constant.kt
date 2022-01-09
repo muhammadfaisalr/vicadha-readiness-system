@@ -3,6 +3,7 @@ package id.muhammadfaisal.vicadhareadinesssystem.utils
 class Constant {
     class Key {
         companion object {
+            const val FOR_GROUP = "FOR_GROUP"
             const val BUNDLING = "BUNDLING"
             const val USER_NAME = "USER_NAME"
             const val USER_EMAIL = "USER_EMAIL"
@@ -15,6 +16,8 @@ class Constant {
             const val INBOX_CONTENT = "INBOX_CONTENT"
             const val INBOX_DATE = "INBOX_DATE"
             const val SUCCESS_TITLE = "SUCCESS_TITLE"
+            const val IS_FIRST_OPEN = "IS_FIRST_OPEN"
+            const val NO = "NO"
         }
     }
 
@@ -23,6 +26,13 @@ class Constant {
             const val SUPER_ADMIN = 2
             const val ADMIN = 1
             const val MEMBER = 0
+        }
+    }
+
+    class MessageType {
+        companion object {
+            const val REGULAR = 0
+            const val IMPORTANT = 1
         }
     }
 

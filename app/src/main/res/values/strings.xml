@@ -64,4 +64,9 @@
     <string name="desc_danger_message">Kirim sinyal bahaya kepada para anggota dengan kepentingan tingg</string>
     <string name="share">Bagikan</string>
     <string name="use_default_password">Gunakan Kata Sandi Default</string>
+    <string name="can_t_login">Tidak Dapat Login</string>
+    <string name="can_t_login_desc">Pastikan anda telah mengisi semua field yang dibutuhkan.</string>
+    <string name="position_on_app">Posisi Pada Aplikasi</string>
+    <string name="super_admin">Super Admin</string>
+    <string name="can_t_create_account_desc">Tidak dapat membuat akun, pastikan anda telah mengisi semua field yang dibutuhkan</string>
 </resources>

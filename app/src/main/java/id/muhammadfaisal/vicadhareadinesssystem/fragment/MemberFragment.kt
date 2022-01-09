@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Database
 import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentMemberBinding
+import id.muhammadfaisal.vicadhareadinesssystem.helper.DatabaseHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
-class MemberFragment : Fragment(), View.OnClickListener {
+class MemberFragment(var groupName: String) : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentMemberBinding
 
@@ -28,9 +31,11 @@ class MemberFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val userDao = DatabaseHelper.RoomDb.userDao(requireContext())
+
         this.binding.apply {
             this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            this.recyclerView.adapter = MemberAdapter(requireContext())
+            this.recyclerView.adapter = MemberAdapter(requireContext(), userDao.getAllByGroupName(groupName))
             this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
 
             GeneralHelper.makeClickable(this@MemberFragment, this.exfabAddMember)
@@ -39,7 +44,10 @@ class MemberFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         if (p0 == this.binding.exfabAddMember) {
-            MoveTo.addMember(requireContext(), null, false)
+            val bundle = Bundle()
+            bundle.putString(Constant.Key.FOR_GROUP, this.groupName)
+            bundle.putInt(Constant.Key.ROLE_ID, Constant.Role.MEMBER)
+            MoveTo.addMember(requireContext(), bundle, false)
         }
     }
 }

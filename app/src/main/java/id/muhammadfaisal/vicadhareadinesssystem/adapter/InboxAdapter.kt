@@ -7,15 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.ItemInboxBinding
+import id.muhammadfaisal.vicadhareadinesssystem.firebase.model.MessageFirebase
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
-class InboxAdapter(var context: Context) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxAdapter(var context: Context, var messages: ArrayList<MessageFirebase>) : RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var binding = ItemInboxBinding.bind(this.itemView)
 
-        fun bind(context: Context) {
+        fun bind(context: Context, messageFirebase: MessageFirebase) {
+            this.binding.apply {
+                this.textTitle.text = messageFirebase.title
+            }
             GeneralHelper.makeClickable(this, this.binding.root)
         }
 
@@ -32,10 +36,10 @@ class InboxAdapter(var context: Context) : RecyclerView.Adapter<InboxAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(context)
+        holder.bind(context, messages[position])
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return messages.size
     }
 }

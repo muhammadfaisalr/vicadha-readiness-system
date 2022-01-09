@@ -30,10 +30,10 @@
                 android:src="@drawable/soldier_bg" />
 
             <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:src="@drawable/logo_vicadha"
-                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="48dp"/>
 

@@ -28,5 +28,20 @@ class GeneralHelper {
                 view.setOnClickListener(listener)
             }
         }
+
+        fun textAvatar(s: String) : String{
+            val splitted = s.split(" ")
+
+            var strings = ""
+            var index = 0
+            for (i in splitted){
+                if (index < 2){
+                    strings += i[0].toString()
+                }
+                index += 1
+            }
+
+            return strings
+        }
     }
 }

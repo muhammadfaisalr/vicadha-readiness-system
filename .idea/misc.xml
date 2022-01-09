@@ -5,22 +5,29 @@
       <map>
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/TestInterview/VicadhaReadinessSystem/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/drawable/all_rounded.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/drawable/all_rounded_4.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/drawable/gradient_primary.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/drawable/ic_back.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_add_member.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_config.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_detail_group.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_detail_message.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_profile.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_send_notification.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_success.xml" value="0.1" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/activity_write_message.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/fragment_bottom_sheet_child_group.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/fragment_bottom_sheet_error.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/fragment_bottom_sheet_send_message.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/fragment_inbox.xml" value="0.22" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/fragment_member.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/item_group.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/item_inbox.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/layout/item_member.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/muham/StudioProjects/vicadha-readiness-system/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

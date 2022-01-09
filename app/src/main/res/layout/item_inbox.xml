@@ -23,6 +23,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textTitle"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -31,6 +32,7 @@
             android:text="Bahaya Kebakaran"/>
 
         <TextView
+            android:id="@+id/textDate"
             android:textSize="16sp"
             android:textColor="@color/grayText"
             android:layout_width="wrap_content"

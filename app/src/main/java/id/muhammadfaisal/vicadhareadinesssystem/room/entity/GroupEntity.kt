@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "m_group")
 data class GroupEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int?,
     @ColumnInfo(name = "name") var name: String,
-    @ColumnInfo(name = "parent_group") var parentGroup: String,
+    @ColumnInfo(name = "parent_group") var parentGroup: String?,
+    @ColumnInfo(name = "image") var image: Int,
     @ColumnInfo(name = "f_delete") var flagDelete: String
 ) {}

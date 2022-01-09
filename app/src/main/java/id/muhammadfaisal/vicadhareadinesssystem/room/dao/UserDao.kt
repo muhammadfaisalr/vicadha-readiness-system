@@ -12,6 +12,9 @@ interface UserDao {
     @Query("SELECT * FROM m_user")
     fun getAll(): List<UserEntity>
 
+    @Query("SELECT * FROM m_user WHERE group_name = :groupName")
+    fun getAllByGroupName(groupName: String): List<UserEntity>
+
     @Insert
     fun insert(userEntity: UserEntity)
 
