@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Vicadha Readiness System</string>
-    <string name="app_name_login">Vicadha\nReadiness System</string>
+    <string name="app_name_login">Vicadha Command\nReadiness System</string>
     <string name="add_member">Tambah Anggota</string>
     <string name="phone_number">Nomor Telepon</string>
     <string name="member_name">Nama Anggota</string>
@@ -10,6 +10,7 @@
     <string name="confirm_password">Konfirmasi Kata Sandi</string>
     <string name="add">Tambah</string>
     <string name="success_add_member">Anggota\nBerhasil Ditambah</string>
+    <string name="success_delete_member">Anggota\nBerhasil Dihapus</string>
     <string name="auto_intent">Anda akan otomatis kembali ke beranda</string>
     <string name="inbox">Pesan</string>
     <string name="dummy_inbox_title">Panggilan Kepada Anggota UJWALA YUDHA</string>
@@ -35,7 +36,7 @@
     <string name="email_or_password_can_t_be_empty">Email atau Password Tidak Boleh Kosong</string>
     <string name="success_create_account">Berhasil Buat Akun</string>
     <string name="logout">Logout</string>
-    <string name="add_admin">Tambah Komandan</string>
+    <string name="add_admin">Tambah Admin Group</string>
     <string name="make_sure_fill_was_filled">Pastikan Semua Data Telah di Isi</string>
     <string name="password_not_equal">Password Tidak Sama</string>
     <string name="password_not_equal_desc">Pastikan Password Dan Konfirmasi Password Sesuai.</string>
@@ -55,13 +56,13 @@
     <string name="notification_sended">Notifikasi Berhasil Dikirim</string>
     <string name="waiting_connection">Menunggu Koneksi...</string>
     <string name="member_deleted">Anggota Berhasil Dihapus!</string>
-    <string name="add_super_admin">Tambah Admin</string>
+    <string name="add_super_admin">Tambah Admin Aplikasi</string>
     <string name="desc_add_super_admin">Tambah Admin Untuk Membantu Anda Mengatur Aplikasi</string>
     <string name="member_can_t_be_empty">Anggota Tidak Boleh Kosong.</string>
     <string name="desc_regular_message">Kirim Pesan dengan kepentingan yang rendah</string>
     <string name="regular_message">Kirim Pesan Regular</string>
-    <string name="danger_message">Kirim Sinyal Bahaya</string>
-    <string name="desc_danger_message">Kirim sinyal bahaya kepada para anggota dengan kepentingan tingg</string>
+    <string name="danger_message">Kirim Sinyal Alarm</string>
+    <string name="desc_danger_message">Kirim sinyal alarm kepada para anggota dengan kepentingan tinggi</string>
     <string name="share">Bagikan</string>
     <string name="use_default_password">Gunakan Kata Sandi Default</string>
     <string name="can_t_login">Tidak Dapat Login</string>
@@ -69,4 +70,23 @@
     <string name="position_on_app">Posisi Pada Aplikasi</string>
     <string name="super_admin">Super Admin</string>
     <string name="can_t_create_account_desc">Tidak dapat membuat akun, pastikan anda telah mengisi semua field yang dibutuhkan</string>
+    <string name="upload_document">Unggah Dokumen</string>
+    <string name="add_document">Tambahkan Dokumen</string>
+    <string name="document">Dokumen</string>
+    <string name="download_document">Unduh Dokumen</string>
+    <string name="document_uploaded">Dokumen Berhasil Di Unggah</string>
+    <string name="delete">Hapus</string>
+    <string name="success_delete_document">Dokument Berhasil Di Hapus</string>
+    <string name="unity">Semua Anggota</string>
+    <string name="choose_group">Pilih Group</string>
+    <string name="group_not_found">Group tidak ditemukan, harap periksa nama group yang anda masukkan kembali!</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="desc_email_cant_editable">Email tidak dapat dirubah karena alasan keamanan.</string>
+    <string name="success_update_data">Berhasil Mengubah Data</string>
+    <string name="new_password">Kata Sandi Baru</string>
+    <string name="input_password">Masukkan Kata Sandi</string>
+    <string name="desc_verification_password">Kata sandi dibutuhkan untuk menjaga dari interaksi yang tidak diinginkan.</string>
+    <string name="verification">Verifikasi</string>
+    <string name="wrong_password_desc">Kata Sandi salah, silahkan mencoba kembali.</string>
+    <string name="wrong_password">Kata Sandi Salah</string>
 </resources>

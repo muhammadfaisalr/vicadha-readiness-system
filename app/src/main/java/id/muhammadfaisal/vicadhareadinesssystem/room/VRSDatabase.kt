@@ -7,7 +7,7 @@ import id.muhammadfaisal.vicadhareadinesssystem.room.dao.UserDao
 import id.muhammadfaisal.vicadhareadinesssystem.room.entity.GroupEntity
 import id.muhammadfaisal.vicadhareadinesssystem.room.entity.UserEntity
 
-@Database(entities = [UserEntity::class, GroupEntity::class], version = 1)
+@Database(entities = [UserEntity::class, GroupEntity::class], version = 3)
 abstract class VRSDatabase : RoomDatabase() {
     abstract fun userDao() : UserDao
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import id.muhammadfaisal.vicadhareadinesssystem.fragment.MemberFragment
+import id.muhammadfaisal.vicadhareadinesssystem.fragment.DocumentFragment
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 
 class GeneralHelper {
@@ -42,6 +42,38 @@ class GeneralHelper {
             }
 
             return strings
+        }
+
+        fun setAsGroupId(s: String): String {
+            return s.replace(" ", "")
+        }
+
+        fun getRoleName(roleId: Int): String {
+            return when (roleId) {
+                Constant.Role.ADMIN -> {
+                    Constant.RoleName.ADMIN
+                }
+                Constant.Role.SUPER_ADMIN -> {
+                    Constant.RoleName.SUPER_ADMIN
+                }
+                else -> {
+                    Constant.RoleName.MEMBER
+                }
+            }
+        }
+
+        fun getRoleId(roleName: String): Int {
+            return when (roleName) {
+                Constant.RoleName.ADMIN -> {
+                    Constant.Role.ADMIN
+                }
+                Constant.RoleName.SUPER_ADMIN -> {
+                    Constant.Role.SUPER_ADMIN
+                }
+                else -> {
+                    Constant.Role.MEMBER
+                }
+            }
         }
     }
 }

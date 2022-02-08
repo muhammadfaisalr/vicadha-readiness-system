@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageBack"
+                android:id="@+id/imageLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:foreground="?attr/selectableItemBackground"
@@ -105,7 +105,29 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:inputType="textEmailAddress"
-                    android:maxLength="33"
+                    android:maxLength="50"
+                    android:textColor="@color/brownPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:id="@+id/layoutGroup"
+                android:layout_marginVertical="8dp"
+                android:hint="@string/choose_group"
+                app:hintEnabled="true"
+                app:prefixTextColor="@color/brownPrimary">
+
+                <AutoCompleteTextView
+                    android:id="@+id/inputChooseGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
                     android:textColor="@color/brownPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>

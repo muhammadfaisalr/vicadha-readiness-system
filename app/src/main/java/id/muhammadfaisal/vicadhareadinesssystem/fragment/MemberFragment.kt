@@ -8,17 +8,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Database
-import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentMemberBinding
 import id.muhammadfaisal.vicadhareadinesssystem.helper.DatabaseHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
+import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
 
-class MemberFragment(var groupName: String) : Fragment(), View.OnClickListener {
+class MemberFragment() : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentMemberBinding
+    private lateinit var groupName: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +30,15 @@ class MemberFragment(var groupName: String) : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val data = this.requireArguments().getString(Constant.Key.GROUP_NAME)!!
+        this.groupName = data
 
         val userDao = DatabaseHelper.RoomDb.userDao(requireContext())
 
         this.binding.apply {
             this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             this.recyclerView.adapter = MemberAdapter(requireContext(), userDao.getAllByGroupName(groupName))
-            this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
+            this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
 
             GeneralHelper.makeClickable(this@MemberFragment, this.exfabAddMember)
         }

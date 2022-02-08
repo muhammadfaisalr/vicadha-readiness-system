@@ -36,8 +36,8 @@ class AuthHelper {
                     .createUserWithEmailAndPassword(user.email!!, user.password!!)
             }
 
-            fun updatePassword(user: UserFirebase): Task<Void> {
-                return getCurrentUser()!!.updatePassword(user.password!!)
+            fun updatePassword(newPwd: String): Task<Void> {
+                return getCurrentUser()!!.updatePassword(newPwd)
             }
 
             fun logout() {

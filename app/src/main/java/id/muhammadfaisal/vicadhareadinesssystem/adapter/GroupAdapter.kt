@@ -1,6 +1,5 @@
 package id.muhammadfaisal.vicadhareadinesssystem.adapter
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,20 +15,23 @@ import id.muhammadfaisal.vicadhareadinesssystem.utils.BottomSheets
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 
-class GroupAdapter(var context: AppCompatActivity, var groups: List<GroupEntity>) : RecyclerView.Adapter<GroupAdapter.ViewHolder>() {
+class GroupAdapter(var context: AppCompatActivity, var groups: List<GroupEntity>) :
+    RecyclerView.Adapter<GroupAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var binding = ItemGroupBinding.bind(itemView)
-        private lateinit var contextActivity : AppCompatActivity
+        private lateinit var contextActivity: AppCompatActivity
 
         fun bind(context: AppCompatActivity, groupEntity: GroupEntity) {
 
-            contextActivity = context
+            val userDao = DatabaseHelper.RoomDb.userDao(context)
+            val users = userDao.getAllByGroupName(groupEntity.name)
+            this.contextActivity = context
 
-            binding.apply {
+            this.binding.apply {
                 this.imageView.setImageResource(groupEntity.image)
                 this.textTitle.text = groupEntity.name
-                this.textTotalAnggota.text = "1 Anggota"
+                this.textTotalAnggota.text = "${users.size} Anggota"
             }
 
             GeneralHelper.makeClickable(this, binding.root)
@@ -37,20 +39,17 @@ class GroupAdapter(var context: AppCompatActivity, var groups: List<GroupEntity>
 
         override fun onClick(p0: View?) {
             if (p0 == binding.root) {
-                val hasChild = DatabaseHelper.RoomDb.groupDao(binding.root.context).getChild(binding.textTitle.text.toString()).isNotEmpty()
-                if (hasChild) {
-                    BottomSheets.childGroup(contextActivity, binding.textTitle.text.toString())
-                }else{
-                    val bundle = Bundle()
-                    bundle.putString(Constant.Key.GROUP_NAME, this.binding.textTitle.text.toString())
-                    MoveTo.detailGroup(contextActivity, bundle, false)
-                }
+                val bundle = Bundle()
+                bundle.putString(Constant.Key.GROUP_NAME, this.binding.textTitle.text.toString())
+                MoveTo.detailGroup(contextActivity, bundle, false)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_group, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_group, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

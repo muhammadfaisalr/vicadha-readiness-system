@@ -1,12 +1,10 @@
 package id.muhammadfaisal.vicadhareadinesssystem.bottomsheet
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.FragmentBottomSheetErrorBinding
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 

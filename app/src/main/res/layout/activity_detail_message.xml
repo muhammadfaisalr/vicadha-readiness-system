@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageBack"
+                android:id="@+id/imageLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back"/>
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Apel Pagi"
                 android:textColor="@color/grayText"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/montserrat"
                 android:id="@+id/textSubtitle"/>
 
@@ -58,21 +58,23 @@
             android:layout_marginTop="16dp">
 
             <TextView
+                android:id="@+id/textContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/grayText"
                 android:text="Ini Adalah Contoh Halaman Pesan"
                 android:fontFamily="@font/montserrat"
-                android:textSize="12sp"/>
+                android:textSize="14sp"/>
 
             <TextView
+                android:id="@+id/textDate"
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:text="19:03 22/12/2022"
                 android:fontFamily="@font/montserrat"
-                android:textSize="12sp"/>
+                android:textSize="14sp"/>
 
         </LinearLayout>
 

@@ -1,7 +1,7 @@
 package id.muhammadfaisal.vicadhareadinesssystem.fragment
 
 import android.os.Bundle
-import android.os.Message
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,10 +20,12 @@ import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 import id.muhammadfaisal.vicadhareadinesssystem.utils.BottomSheets
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.SharedPreferences
+import java.lang.Exception
 
-class InboxFragment(var groupName: String) : Fragment(), View.OnClickListener {
+class InboxFragment() : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentInboxBinding
+    private lateinit var groupName : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,15 +38,21 @@ class InboxFragment(var groupName: String) : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val data = this.requireArguments().getString(Constant.Key.GROUP_NAME)!!
+        this.groupName = data
+
         this.setup()
         val role = SharedPreferences.get(requireContext(), Constant.Key.ROLE_ID)
 
-        if (role != Constant.Role.SUPER_ADMIN) {
+        if (role == Constant.Role.MEMBER) {
             this.binding.apply {
                 this.exfabWriteMessage.visibility = View.GONE
             }
         }
+
         this.binding.apply {
+            this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
             GeneralHelper.makeClickable(this@InboxFragment, this.exfabWriteMessage)
         }
     }
@@ -61,10 +69,11 @@ class InboxFragment(var groupName: String) : Fragment(), View.OnClickListener {
                         messages.add(message!!)
                     }
 
-                    this@InboxFragment.binding.apply {
-                        this.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-                        this.recyclerView.adapter = InboxAdapter(requireContext(), messages)
-                        this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL  ))
+                    try {
+                        this@InboxFragment.binding.recyclerView.adapter =
+                            InboxAdapter(requireContext(), messages)
+                    } catch (e: Exception) {
+                        Log.e(InboxFragment::class.java.simpleName, e.message!!)
                     }
                 }
 

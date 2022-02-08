@@ -11,8 +11,17 @@ interface GroupDao {
     @Query("SELECT * FROM m_group")
     fun getAll(): List<GroupEntity>
 
+    @Query("SELECT * FROM m_group WHERE parent_group IS NULL")
+    fun getAllParent(): List<GroupEntity>
+
+    @Query("SELECT * FROM m_group WHERE name = :name")
+    fun get(name: String): GroupEntity?
+
     @Query("SELECT * FROM m_group WHERE parent_group= :groupName")
-    fun getAllChild(groupName: String): List<GroupEntity>
+    fun getChildren(groupName: String): List<GroupEntity>
+
+    @Query("SELECT name FROM m_group")
+    fun getGroupName() : List<String>
 
     @Insert
     fun insert(groupEntity: GroupEntity)

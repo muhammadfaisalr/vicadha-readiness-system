@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     android:orientation="horizontal">
 
@@ -17,9 +18,10 @@
         android:textColor="@color/greenPrimary" />
 
     <LinearLayout
+        android:layout_weight="1"
         android:gravity="center|start"
         android:layout_marginStart="16dp"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -42,5 +44,15 @@
             android:text="+62 81234567890"/>
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDelete"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:textColor="@color/soft_red"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/soft_red"/>
 
 </LinearLayout>

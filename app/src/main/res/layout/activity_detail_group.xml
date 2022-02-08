@@ -8,7 +8,7 @@
     tools:context=".activity.DetailGroupActivity">
 
     <ImageView
-        android:id="@+id/imageBack"
+        android:id="@+id/imageLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
@@ -43,6 +43,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/textTotalMember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -50,6 +51,13 @@
                 android:text="100 Anggota"
                 android:textColor="@color/grayText"
                 android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAddAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_admin"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -72,6 +80,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inbox" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/document" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unity" />
 
     </com.google.android.material.tabs.TabLayout>
 

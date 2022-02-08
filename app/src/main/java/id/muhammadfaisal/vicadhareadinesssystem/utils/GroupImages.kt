@@ -7,7 +7,7 @@ class GroupImages {
         const val DIVIF_2_KOSTRAD = R.drawable.difiv2kostrad
         const val DANBRIG_MR_6 = R.drawable.danbrig_mr_6
         const val DANYONIF_MR_411 = R.drawable.danyonif_mr411
-        const val DANYONIF_MR_412 = R.drawable.danyonif_mr413
+        const val DANYONIF_MR_412 = R.drawable.danyonif_mr412
         const val DANYONIF_MR_413 = R.drawable.danyonif_mr413
         const val DANBRIG_R_9 = R.drawable.danbrig_r9
         const val DANYONIF_R_509 = R.drawable.danyonif509

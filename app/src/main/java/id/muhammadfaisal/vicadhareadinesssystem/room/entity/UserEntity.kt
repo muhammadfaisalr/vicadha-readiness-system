@@ -12,5 +12,7 @@ data class UserEntity(
     @ColumnInfo(name = "phone_number") var phoneNumber: Long,
     @ColumnInfo(name = "group_name") var groupName: String?,
     @ColumnInfo(name = "role_id") var roleId: Int,
-    @ColumnInfo(name = "f_delete", defaultValue = "N") var flagDelete: String?
+    @ColumnInfo(name = "f_delete", defaultValue = "N") var flagDelete: String?,
+    @ColumnInfo(name = "key") var key: String?,
+    @ColumnInfo(name = "password") var password: String?
 ) {}

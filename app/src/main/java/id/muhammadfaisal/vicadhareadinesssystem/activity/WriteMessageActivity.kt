@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import id.muhammadfaisal.vicadhareadinesssystem.R
 import id.muhammadfaisal.vicadhareadinesssystem.databinding.ActivityWriteMessageBinding
 import id.muhammadfaisal.vicadhareadinesssystem.firebase.model.MessageFirebase
-import id.muhammadfaisal.vicadhareadinesssystem.firebase.model.UserFirebase
-import id.muhammadfaisal.vicadhareadinesssystem.helper.AuthHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.DatabaseHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
-import id.muhammadfaisal.vicadhareadinesssystem.utils.BottomSheets
-import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
-import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
+import id.muhammadfaisal.vicadhareadinesssystem.ui.Loading
+import id.muhammadfaisal.vicadhareadinesssystem.utils.*
 
 class WriteMessageActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -29,6 +27,7 @@ class WriteMessageActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         this.binding = ActivityWriteMessageBinding.inflate(this.layoutInflater)
         this.setContentView(this.binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         this.bundle = this.intent.getBundleExtra(Constant.Key.BUNDLING)!!
         this.groupName = this.bundle.getString(Constant.Key.GROUP_NAME, "")
@@ -48,11 +47,13 @@ class WriteMessageActivity : AppCompatActivity(), View.OnClickListener {
             DatabaseHelper.Firebase.getInboxReference(this.groupName).removeValue()
         }*/
     private fun send() {
+        val loading = Loading(this)
+        loading.setCancelable(false)
+        loading.show()
         var title = ""
         var message = ""
 
-        val authId = AuthHelper.getUid()
-        var sender = ""
+        val sender = SharedPreferences.get(this, Constant.Key.USER_NAME) as String
 
         this.binding.apply {
             title = this.inputTitle.text.toString()
@@ -60,6 +61,7 @@ class WriteMessageActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         if (title.isEmpty() || message.isEmpty()) {
+            loading.dismiss()
             BottomSheets.error(
                 this,
                 getString(R.string.something_wrong),
@@ -72,58 +74,50 @@ class WriteMessageActivity : AppCompatActivity(), View.OnClickListener {
         val messages = ArrayList<MessageFirebase>()
 
         var isCanContinue = true
-        var index =0
+        var index = 0
 
-        Log.d(WriteMessageActivity::class.java.simpleName, "Start Getting User Information....")
+        val messageModel = MessageFirebase(title, message, sender, System.currentTimeMillis(), Constant.MessageType.REGULAR)
         DatabaseHelper
             .Firebase
-            .getAccountReference(authId!!)
+            .getInboxReference(this@WriteMessageActivity.groupName)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val user = snapshot.getValue(UserFirebase::class.java)
-                    sender = user!!.name
-                    Log.d(WriteMessageActivity::class.java.simpleName, "Getting User Information Success. Sender Name: $sender")
-                    val messageModel = MessageFirebase(title, message, sender, System.currentTimeMillis(), Constant.MessageType.REGULAR)
-                    DatabaseHelper
-                        .Firebase
-                        .getInboxReference(this@WriteMessageActivity.groupName)
-                        .addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                Log.d("Loop", "${index++}")
-                                for (data in snapshot.children) {
-                                    val messageChildren = data.getValue(MessageFirebase::class.java)
-                                    messages.add(messageChildren!!)
-                                }
+                    Log.d("Loop", "${index++}")
+                    messages.add(messageModel)
 
-                                messages.add(messageModel)
+                    for (data in snapshot.children) {
+                        val messageChildren = data.getValue(MessageFirebase::class.java)
+                        messages.add(messageChildren!!)
+                    }
 
-                                if (isCanContinue) {
-                                    DatabaseHelper
-                                        .Firebase
-                                        .getInboxReference(this@WriteMessageActivity.groupName)
-                                        .setValue(messages)
-                                        .addOnSuccessListener {
-                                            val bundle = Bundle()
-                                            bundle.putString(
-                                                Constant.Key.SUCCESS_TITLE,
-                                                getString(R.string.notification_sended)
-                                            )
-                                            MoveTo.success(this@WriteMessageActivity, bundle, true)
-                                        }
-                                }
-                                isCanContinue = false
+                    if (isCanContinue) {
+                        DatabaseHelper
+                            .Firebase
+                            .getInboxReference(this@WriteMessageActivity.groupName)
+                            .setValue(messages)
+                            .addOnSuccessListener {
+                                loading.dismiss()
+                                val bundle = Bundle()
+                                MessagingService.sendMessage(messageModel, groupName, GeneralHelper.setAsGroupId(this@WriteMessageActivity.groupName))
 
+                                //Send Notification to SuperAdmin
+                                messageModel.title = "Pesan Baru pada $groupName"
+                                messageModel.message = "Ada Pesan Baru di $groupName, Segera Periksa!."
+                                MessagingService.sendMessage(messageModel, groupName, GeneralHelper.setAsGroupId(Constant.RoleName.SUPER_ADMIN))
+
+                                bundle.putString(
+                                    Constant.Key.SUCCESS_TITLE,
+                                    getString(R.string.notification_sended)
+                                )
+                                MoveTo.success(this@WriteMessageActivity, bundle, true)
                             }
+                    }
+                    isCanContinue = false
 
-                            override fun onCancelled(error: DatabaseError) {
-
-                            }
-
-                        })
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-
+                    loading.dismiss()
                 }
 
             })
