@@ -89,6 +89,7 @@ class ChangePasswordActivity : AppCompatActivity(), View.OnClickListener {
                                             .updatePassword(password)
                                             .addOnCompleteListener {
                                                 loading.dismiss()
+                                                SharedPreferences.save(this@ChangePasswordActivity, Constant.Key.USER_PASSWORD, Encrypter.encryptString(password).toString());
                                                 Toast.makeText(
                                                     this@ChangePasswordActivity,
                                                     "Berhasil Update Kata Sandi!",

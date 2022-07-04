@@ -14,6 +14,7 @@ import id.muhammadfaisal.vicadhareadinesssystem.databinding.ItemMemberBinding
 import id.muhammadfaisal.vicadhareadinesssystem.helper.AuthHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.DatabaseHelper
 import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
+import id.muhammadfaisal.vicadhareadinesssystem.listener.ClickListener
 import id.muhammadfaisal.vicadhareadinesssystem.room.entity.UserEntity
 import id.muhammadfaisal.vicadhareadinesssystem.ui.Loading
 import id.muhammadfaisal.vicadhareadinesssystem.utils.*
@@ -23,11 +24,19 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MemberAdapter(var context: Context, var users: List<UserEntity>): RecyclerView.Adapter<MemberAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener,
+        ClickListener {
 
         private var binding = ItemMemberBinding.bind(this.itemView)
         private lateinit var context: Context
         private lateinit var userEntity: UserEntity
+
+        companion object {
+            const val DELETE_BUTTON = 1001
+            const val ITEM_VIEW = 1002
+        }
+
+        private var action: Int = DELETE_BUTTON
 
         fun bind(context: Context, userEntity: UserEntity, i: Int) {
             this.context = context
@@ -36,7 +45,7 @@ class MemberAdapter(var context: Context, var users: List<UserEntity>): Recycler
             this.binding.apply {
                 this.textAvatar.text = GeneralHelper.textAvatar(userEntity.name)
                 this.textName.text = userEntity.name
-                this.textPhone.text = userEntity.phoneNumber.toString()
+                this.textPhone.text = "+62 ${userEntity.phoneNumber}"
 
 
                 this.buttonDelete.setOnClickListener(this@ViewHolder)
@@ -89,13 +98,11 @@ class MemberAdapter(var context: Context, var users: List<UserEntity>): Recycler
         override fun onClick(p0: View?) {
 
             if (p0 == this.binding.buttonDelete) {
-                this.processDelete()
+                action = DELETE_BUTTON
+                BottomSheets.verification(context, this)
             } else {
-                val bundle = Bundle()
-                bundle.putString(Constant.Key.OPEN_FROM, MemberAdapter::class.java.simpleName)
-                bundle.putString(Constant.Key.USER_EMAIL, this.userEntity.email)
-
-                MoveTo.editProfile(this.context, bundle, false)
+                this.action = ITEM_VIEW
+                BottomSheets.verification(context, this)
             }
         }
 
@@ -120,6 +127,25 @@ class MemberAdapter(var context: Context, var users: List<UserEntity>): Recycler
                 MoveTo.success(context, bundle, true)
             }, 5000L)
 
+        }
+
+        override fun verification(password: String) {
+            val savedPassword = Encrypter.decryptString(SharedPreferences.get(this.context, Constant.Key.USER_PASSWORD).toString())
+
+            if (password == savedPassword) {
+                Log.d(MemberAdapter::class.java.simpleName, "Action $action")
+                if (this.action == DELETE_BUTTON){
+                    this.processDelete()
+                } else if (this.action == ITEM_VIEW) {
+                    val bundle = Bundle()
+                    bundle.putString(Constant.Key.OPEN_FROM, MemberAdapter::class.java.simpleName)
+                    bundle.putString(Constant.Key.USER_EMAIL, this.userEntity.email)
+
+                    MoveTo.editProfile(this.context, bundle, false)
+                }
+            }else{
+                BottomSheets.wrongPassword(this.context, true)
+            }
         }
     }
 

@@ -2,6 +2,8 @@ package id.muhammadfaisal.vicadhareadinesssystem.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +15,7 @@ import id.muhammadfaisal.vicadhareadinesssystem.helper.GeneralHelper
 import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 import id.muhammadfaisal.vicadhareadinesssystem.utils.SharedPreferences
+import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

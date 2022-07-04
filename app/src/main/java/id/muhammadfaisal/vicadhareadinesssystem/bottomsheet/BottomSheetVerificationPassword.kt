@@ -38,6 +38,7 @@ class BottomSheetVerificationPassword(private val clickListener: ClickListener) 
             if (password != null) {
                 if (password.isNotEmpty()) {
                     clickListener.verification(password = password.toString())
+                    this.dismiss()
                 }else{
                     Toast.makeText(requireContext(), "Password Belum Di Masukkan", Toast.LENGTH_SHORT).show()
                 }

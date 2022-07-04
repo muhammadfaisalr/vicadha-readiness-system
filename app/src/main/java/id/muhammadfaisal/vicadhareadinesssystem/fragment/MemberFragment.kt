@@ -1,6 +1,8 @@
 package id.muhammadfaisal.vicadhareadinesssystem.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +17,7 @@ import id.muhammadfaisal.vicadhareadinesssystem.utils.Constant
 import id.muhammadfaisal.vicadhareadinesssystem.utils.MoveTo
 import id.muhammadfaisal.vicadhareadinesssystem.adapter.MemberAdapter
 
-class MemberFragment() : Fragment(), View.OnClickListener {
+class MemberFragment() : Fragment(), View.OnClickListener, TextWatcher {
 
     private lateinit var binding: FragmentMemberBinding
     private lateinit var groupName: String
@@ -40,6 +42,8 @@ class MemberFragment() : Fragment(), View.OnClickListener {
             this.recyclerView.adapter = MemberAdapter(requireContext(), userDao.getAllByGroupName(groupName))
             this.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
 
+            this.inputSearch.addTextChangedListener(this@MemberFragment)
+
             GeneralHelper.makeClickable(this@MemberFragment, this.exfabAddMember)
         }
     }
@@ -50,6 +54,27 @@ class MemberFragment() : Fragment(), View.OnClickListener {
             bundle.putString(Constant.Key.FOR_GROUP, this.groupName)
             bundle.putInt(Constant.Key.ROLE_ID, Constant.Role.MEMBER)
             MoveTo.addMember(requireContext(), bundle, false)
+        }
+    }
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    }
+
+    override fun afterTextChanged(p0: Editable?) {
+        val userDao = DatabaseHelper.RoomDb.userDao(requireContext())
+
+        if (p0 != null) {
+            if (p0.isNotEmpty()) {
+                val s = p0.toString()
+
+                this.binding.recyclerView.adapter = MemberAdapter(requireContext(), userDao.query(GeneralHelper.queryFormat(s), groupName))
+            } else {
+                this.binding.recyclerView.adapter = MemberAdapter(requireContext(), userDao.getAllByGroupName(groupName))
+            }
         }
     }
 }

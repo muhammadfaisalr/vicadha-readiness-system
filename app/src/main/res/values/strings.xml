@@ -89,4 +89,5 @@
     <string name="verification">Verifikasi</string>
     <string name="wrong_password_desc">Kata Sandi salah, silahkan mencoba kembali.</string>
     <string name="wrong_password">Kata Sandi Salah</string>
+    <string name="search_member">Cari Anggota</string>
 </resources>

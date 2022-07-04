@@ -15,6 +15,9 @@ interface UserDao {
     @Query("SELECT * FROM m_user WHERE name = :name")
     fun get(name: String) : UserEntity
 
+    @Query("SELECT * FROM m_user WHERE name LIKE :q AND group_name = :groupName")
+    fun query(q: String, groupName: String) : List<UserEntity>
+
     @Query("SELECT * FROM m_user WHERE email = :email")
     fun getByEmail(email: String) : UserEntity
 

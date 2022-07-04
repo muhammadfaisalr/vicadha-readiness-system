@@ -2,6 +2,7 @@ package id.muhammadfaisal.vicadhareadinesssystem.helper
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import id.muhammadfaisal.vicadhareadinesssystem.fragment.DocumentFragment
@@ -34,11 +35,20 @@ class GeneralHelper {
 
             var strings = ""
             var index = 0
-            for (i in splitted){
-                if (index < 2){
-                    strings += i[0].toString()
+
+            try {
+                if (splitted.isNotEmpty()) {
+                    for (i in splitted){
+                        if (index < 2){
+                            strings += i[0].toString()
+                        }
+                        index += 1
+                    }
+                }else{
+                    return s.substring(1)
                 }
-                index += 1
+            }catch (e: Exception) {
+                Log.e(GeneralHelper::class.java.simpleName, e.message.toString())
             }
 
             return strings
@@ -74,6 +84,10 @@ class GeneralHelper {
                     Constant.Role.MEMBER
                 }
             }
+        }
+
+        fun queryFormat(s: String): String {
+            return "%$s%"
         }
     }
 }

@@ -64,8 +64,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener, ClickListener
             bundle.putString(Constant.Key.OPEN_FROM, ProfileActivity::class.java.simpleName)
             MoveTo.editProfile(this, bundle, false)
         } else if (p0 == this.binding.textChangePassword) {
-            val bottomSheet = BottomSheetVerificationPassword(this)
-            bottomSheet.show(this.supportFragmentManager, ProfileActivity::class.java.simpleName)
+            BottomSheets.verification(this, this)
         }
     }
 

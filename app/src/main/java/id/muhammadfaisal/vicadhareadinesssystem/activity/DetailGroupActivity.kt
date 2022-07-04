@@ -59,6 +59,7 @@ class DetailGroupActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener
                     this.imageLeft.setImageResource(R.drawable.ic_outline_account_circle_24)
                     this.buttonAddAdmin.visibility = View.GONE
                     this.tabLayout.getTabAt(0)!!.view.visibility = View.GONE
+                    this.tabLayout.getTabAt(3)!!.view.visibility = View.GONE
                 }
 
                 if (isFromNotification) {
@@ -80,6 +81,7 @@ class DetailGroupActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener
                     this.changeFragment(0)
                 }
             }
+
             else -> {
                 if (isFromNotification) {
                     this.changeFragment(3)
